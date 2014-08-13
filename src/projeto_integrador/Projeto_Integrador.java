@@ -15,7 +15,7 @@ public class Projeto_Integrador {
     
     public static void main(String[] args) {
         System.out.println ("Testando o sistema");
-        new Telas().setVisible(true);
+        
     }
     
 }
