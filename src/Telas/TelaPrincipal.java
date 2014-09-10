@@ -26,44 +26,52 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCadastroUsuario = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        CadastroUsuario = new javax.swing.JButton();
+        OrdemServico = new javax.swing.JButton();
+        CadastroFornecedor = new javax.swing.JButton();
+        CadastroCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        ConsultaUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Obras ");
 
-        jButtonCadastroUsuario.setText("Cadastro Usuário");
-        jButtonCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
+        CadastroUsuario.setText("Cadastro Usuário");
+        CadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastroUsuarioActionPerformed(evt);
+                CadastroUsuarioActionPerformed(evt);
             }
         });
 
-        jButton2.setText("OS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        OrdemServico.setText("OS");
+        OrdemServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                OrdemServicoActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Cadastro Fornecedor ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        CadastroFornecedor.setText("Cadastro Fornecedor ");
+        CadastroFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                CadastroFornecedorActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Cadastro de Clientes ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        CadastroCliente.setText("Cadastro de Cliente ");
+        CadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                CadastroClienteActionPerformed(evt);
             }
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/15741838.jpg"))); // NOI18N
+
+        ConsultaUsuario.setText("Consulta Usuario");
+        ConsultaUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,16 +81,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButtonCadastroUsuario)
+                        .addComponent(CadastroUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(OrdemServico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(CadastroCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
+                        .addComponent(CadastroFornecedor))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ConsultaUsuario)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,11 +101,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastroUsuario)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(53, 53, 53)
+                    .addComponent(CadastroUsuario)
+                    .addComponent(OrdemServico)
+                    .addComponent(CadastroFornecedor)
+                    .addComponent(CadastroCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ConsultaUsuario)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
@@ -102,23 +115,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
             
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void CadastroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroFornecedorActionPerformed
                
         new TelaCadastroFornecedor().setVisible(true);
       
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_CadastroFornecedorActionPerformed
 
-    private void jButtonCadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroUsuarioActionPerformed
-        new Usuario().setVisible(true);
-    }//GEN-LAST:event_jButtonCadastroUsuarioActionPerformed
+    private void CadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroUsuarioActionPerformed
+        new CadastroUsuario().setVisible(true);
+    }//GEN-LAST:event_CadastroUsuarioActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void CadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroClienteActionPerformed
         new CadastroCliente().setVisible(true); 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_CadastroClienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void OrdemServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdemServicoActionPerformed
         new OS().setVisible(true); 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_OrdemServicoActionPerformed
+
+    private void ConsultaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaUsuarioActionPerformed
+        new ConsultaUsuario().setVisible(true);
+    }//GEN-LAST:event_ConsultaUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,10 +172,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButtonCadastroUsuario;
+    private javax.swing.JButton CadastroCliente;
+    private javax.swing.JButton CadastroFornecedor;
+    private javax.swing.JButton CadastroUsuario;
+    private javax.swing.JButton ConsultaUsuario;
+    private javax.swing.JButton OrdemServico;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

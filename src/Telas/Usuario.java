@@ -4,11 +4,24 @@
  */
 package Telas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import sun.awt.windows.WToolkit;
+import utilidades.Conexao;
+
 /**
  *
  * @author Roni Vitor
  */
 public class Usuario extends javax.swing.JFrame {
+    Conexao con = new Conexao();
 
     /**
      * Creates new form Usuario
@@ -32,17 +45,17 @@ public class Usuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButtonAcessar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jTextUsuario = new javax.swing.JTextField();
-        jPasswordSenha = new javax.swing.JPasswordField();
+        Login = new javax.swing.JTextField();
+        Senha = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/15741838.jpg"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 3, 18)); // NOI18N
         jLabel3.setText("CONTROLE DE OBRAS - LOGIN ");
 
-        jLabel2.setText("USUÁRIO:");
+        jLabel2.setText("Login:");
 
         jLabel4.setText("SENHA:");
 
@@ -76,16 +89,14 @@ public class Usuario extends javax.swing.JFrame {
                         .addComponent(jButtonCancelar)
                         .addGap(65, 65, 65))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordSenha))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                            .addComponent(Senha))
+                        .addContainerGap(121, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(187, 187, 187)
                 .addComponent(jLabel3)
@@ -104,11 +115,11 @@ public class Usuario extends javax.swing.JFrame {
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(jTextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAcessar)
@@ -124,16 +135,28 @@ public class Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcessarActionPerformed
-        // Acesso ao sistema
-        String Usuario = jTextUsuario.getText();
-        String Senha = jPasswordSenha.getText();
-            if(Usuario.equals("weslley") && (Senha.equals("preto"))){
+        try{
+            con.conecta();
+            String sql = "SELECT SENHA FROM AD_USUARIO WHERE ID ="+Login.getText()+";";
+            //String sqlLogin = "SELECT LOGIN FROM AD_USUARIO WHERE LOGIN ='"+Login.getText()+"'";
+            con.ps = con.conn.prepareStatement(sql); 
+           // ResultSet results = stm.getResultSet();
+        con.rs = con.ps.getResultSet();        
+           // con.stm.execute(sql);
+            //con.rs = con.stm.getResultSet();
+           JOptionPane.showMessageDialog(null, con.rs);
         
-           TelaPrincipal AcessaTela = new TelaPrincipal();
-           AcessaTela.show();
-           AcessaTela.setLocationRelativeTo(null);
-           Usuario.this.dispose();
+            
+            if(Senha.getText().equals(con.rs.getNString("SENHA"))){
+                System.out.print("Ok");
             }
+            else{
+                System.out.print("Erro");
+            }
+            
+           
+        }
+        catch(Exception e){}
     }//GEN-LAST:event_jButtonAcessarActionPerformed
 
     /**
@@ -171,13 +194,13 @@ public class Usuario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Login;
+    private javax.swing.JPasswordField Senha;
     private javax.swing.JButton jButtonAcessar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordSenha;
-    private javax.swing.JTextField jTextUsuario;
     // End of variables declaration//GEN-END:variables
 }
